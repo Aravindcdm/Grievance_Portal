@@ -1,0 +1,100 @@
+/* src/styles/GrievanceRow.css */
+
+.grievance-row td {
+    padding: 10px;
+    text-align: left;
+}
+
+.grievance-status-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.grievance-status-button:hover{
+    transform: scale(1.1);
+}
+
+.grievance-status-button.solved {
+    background: #28a745;
+    color: white;
+}
+
+.grievance-status-button.unsolved {
+    background: #dc3545;
+    color: white;
+}
+
+.grievance-reply textarea {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.grievance-delete-button {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.grievance-delete-button:hover {
+    background: #cc0000;
+}
+
+
+
+/* src/styles/GrievanceRow.css */
+
+.grievance-reply {
+    width: 100%;
+    min-height: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+}
+
+.reply-submit-button {
+    margin: 5px 0px 10px 0px ;
+    padding: 6px 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.reply-submit-button:hover {
+    background: #0056b3;
+}
+
+.fun-btn{
+    display: flex;
+    flex-direction: column;
+    margin: 7px;
+}
+
+@media (max-width: 768px) {
+    .grievance-row td {
+        font-size: 0.9rem;
+    }
+
+    .grievance-status-button, .grievance-delete-button {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}
+
+

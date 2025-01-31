@@ -1,0 +1,94 @@
+/* Statistics Container */
+#statistics-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Title */
+#statistics-title {
+    font-size: 1.5rem;  /* Reduced title size */
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Count Box */
+.count-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Count Item */
+.count-item {
+    background-color: #f9f9f9;
+    padding: 8px 15px;  /* Reduced padding */
+    border-radius: 8px;
+    text-align: center;
+    width: 30%;
+}
+
+.count-item p {
+    margin: 5px 0;
+    font-size: 0.9rem;  /* Reduced font size */
+}
+
+/* Count Icon */
+.count-icon {
+    font-size: 24px;  /* Slightly smaller icons */
+    color: #28a745;  /* Green color */
+}
+
+/* Solved and Unsolved Count Icons */
+.solved {
+    color: #2ecc71;
+}
+
+.unsolved {
+    color: #e74c3c;
+}
+
+/* Department-wise Grievance Count */
+.department-section {
+    margin-top: 20px;
+}
+
+.department-item {
+    background-color: #f4f4f4;
+    padding: 6px 12px;  /* Reduced padding */
+    border-radius: 6px;  /* Slightly smaller border-radius */
+    margin-bottom: 8px;
+}
+
+.department-item p {
+    font-size: 0.9rem;  /* Reduced font size */
+    color: #555;
+}
+
+/* Progress Bars */
+.progress-section {
+    margin-top: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;  /* Reduced height of progress bar */
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.filled {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.solved .filled {
+    background-color: #2ecc71;
+}
+
+.unsolved .filled {
+    background-color: #e74c3c;
+}

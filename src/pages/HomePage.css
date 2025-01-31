@@ -1,0 +1,351 @@
+/* Base Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f1f5f9;
+    margin: 0;
+    padding: 0;
+    color: #2c3e50;
+}
+
+/* Homepage Container */
+.homepage-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Homepage Title and Grievances */
+.homepage-title,
+.homepage-grievance-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Log-Out Button */
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Navigation Buttons */
+.navigation-btn {
+    background-color: #1abc9c;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.navigation-btn:hover {
+    background-color: #16a085;
+}
+
+/* Grievance List */
+.grievance-list {
+    margin-top: 20px;
+}
+
+/* No Grievance Message */
+.no-grievances-message {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Grievance Item */
+.grievance-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grievance-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Grievance Details */
+.grievance-details p {
+    margin: 5px 0;
+}
+
+/* Status Button */
+.status-btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.solved {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+.unsolved {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Icon Buttons */
+.grievance-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background-color: #1abc9c;
+    border-radius: 50%;
+    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+/* Hover Effect on Icon Buttons */
+.icon-button:hover {
+    color: #fff;
+    background-color: #c0392b;
+}
+
+/* Mobile adjustments for icon buttons */
+@media (max-width: 768px) {
+    /* Adjust the icon button size for mobile */
+    .icon-button {
+        font-size: 18px; /* Slightly smaller icons */
+        padding: 8px; /* Reduced padding for better alignment */
+        width: 40px; /* Fixed width to prevent stretching */
+        height: 40px; /* Fixed height to make it circular */
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Grievance Icons container adjustments */
+    .grievance-icons {
+        gap: 10px; /* Reduce the gap between icons on mobile */
+        align-items: center; /* Ensure icons are aligned centrally */
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+
+    /* Notification Badge adjustments */
+    .notification {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+        top: -2px;
+        right: -2px;
+    }
+}
+
+/* Message Pop-up */
+.message-popup {
+    position: fixed;
+    width: 250px;
+    background-color: #718782;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    height: fit-content;
+}
+
+/* Close Button Inside Popup */
+.close-popup-btn {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: background-color 0.3s;
+}
+
+.close-popup-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .homepage-container {
+        padding: 15px;
+    }
+
+    .grievance-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .status-btn {
+        width: 50%;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+    .grievance-icons {
+        flex-direction:row;
+        align-items: stretch;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* Message Icon - Fixed at Bottom Right */
+#messageIcon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+#messageIcon:hover {
+    transform: scale(1.1);
+}
+
+/* Green Color for Message Icon */
+#messageIcon i {
+    font-size: 32px;
+    color: #28a745;
+}
+
+/* Message Pop-up */
+.message-popup {
+    position: fixed;
+    /*bottom: 10px; */
+    right: 80px;
+    background-color: #fff;
+    padding: 12px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
+    width: 250px;
+    height: fit-content;
+    color: #2c3e50;
+    font-size: 1rem;
+    z-index: 1000;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Arrow for Pop-up */
+.message-popup::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+}
+
+/* Close Button */
+.close-popup-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #e74c3c;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+}
+
+/* Hover effect: Change color and scale up */
+.close-popup-btn:hover {
+    color: #c0392b; /* Slightly darker red */
+    transform: scale(1.2); /* Enlarges the button slightly */
+    background-color: rgba(231, 76, 60, 0.1); /* Adds a subtle red background on hover */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15); /* Deepens shadow on hover */
+}
+
+/* Focus effect for accessibility */
+.close-popup-btn:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 4px rgba(231, 76, 60, 0.3); /* Adds a focus ring */
+}
+
+/* Active state: When clicked */
+.close-popup-btn:active {
+    transform: scale(0.95); /* Slightly shrinks the button for a pressed effect */
+}
+
+
+/* 
+.close-popup-btn {
+    background: none;
+    border: none;
+    font-size: 24px; 
+    color: #e74c3c;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.close-popup-btn:hover {
+    transform: rotate(180deg); 
+} */

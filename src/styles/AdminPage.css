@@ -1,0 +1,123 @@
+/* src/styles/AdminPage.css */
+
+/* Wrapper to ensure styles don't overlap */
+#admin-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eef2f3, #d9e4ea); /* Soft gradient background */
+    padding: 20px;
+}
+
+/* Centering the Admin Dashboard title */
+#admin-page-title {
+    font-size: 2.5rem;
+    color: #222;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /* background: linear-gradient(135deg, #007bff, #0056b3); */
+    background: #1abc9c;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Admin Dashboard container */
+#admin-dashboard-container {
+    width: 90%;
+    max-width: 1100px;
+    background: rgba(255, 255, 255, 0.95); /* Glass effect */
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect to lift the container */
+#admin-dashboard-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling for sections inside the admin dashboard */
+.admin-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+}
+
+.admin-section:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    transform: scale(1.02);
+}
+
+/* Buttons */
+.admin-button {
+    display: inline-block;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+}
+
+.admin-button.primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.admin-button.primary:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Danger button (for actions like deleting users, resetting data, etc.) */
+.admin-button.danger {
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
+}
+
+.admin-button.danger:hover {
+    background: #c00000;
+    transform: scale(1.05);
+}
+
+/* #grievance-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px auto;
+    display:flexbox;
+    
+   
+} */
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #admin-dashboard-container {
+        width: 95%;
+        padding: 18px;
+    }
+
+    #admin-page-title {
+        font-size: 2rem;
+    }
+
+    .admin-button {
+        width: 100%;
+        text-align: center;
+    }
+}

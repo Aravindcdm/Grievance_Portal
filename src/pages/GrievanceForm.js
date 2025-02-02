@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./GrievanceForm.css"; // Importing the separate CSS file
 
 const GrievanceForm = () => {
+  const navigate = useNavigate();
   const [anonymous, setAnonymous] = useState(false);
   const [grievance, setGrievance] = useState({
     fullName: "",
@@ -47,7 +49,10 @@ const GrievanceForm = () => {
   };
 
   return (
+    <div>
+    <button className="back" onClick={() => navigate("/")}> &#8678; Back</button>
     <div className="grievance-form-container">
+      
       <h1 className="grievance-form-title">Grievance Form</h1>
       <form className="grievance-form" onSubmit={handleSubmit}>
         <label className="grievance-checkbox-label">
@@ -131,6 +136,8 @@ const GrievanceForm = () => {
 
         <button type="submit" className="grievance-submit-button">Submit Grievance</button>
       </form>
+    </div>
+
     </div>
   );
 };

@@ -58,6 +58,8 @@ body {
 
 .navigation-btn:hover {
     background-color: #16a085;
+    transform: scale(1.05);
+    border-radius: 10px;
 }
 
 /* Grievance List */
@@ -74,6 +76,7 @@ body {
 /* Grievance Item */
 .grievance-item {
     background-color: #fff;
+    background-color: hsl(168, 57%, 91%);
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 10px;
@@ -105,12 +108,16 @@ body {
     margin-top: 10px;
 }
 
-.solved {
+.status-btn :hover {
+   transform: scale(1.1);
+}
+
+ .solved {
     background-color: #27ae60;
     color: #fff;
 }
 
-.unsolved {
+ .unsolved {
     background-color: #e74c3c;
     color: #fff;
 }
@@ -126,6 +133,7 @@ body {
     background: none;
     border: none;
     color: #7f8c8d;
+    color: #ffffff; /* ! color */
     font-size: 20px;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -138,11 +146,45 @@ body {
     margin: 5px;
 }
 
+
 /* Hover Effect on Icon Buttons */
 .icon-button:hover {
     color: #fff;
     background-color: #c0392b;
 }
+
+
+
+
+/* newly added hover effect */
+
+/* Hover effect for button */
+#status:hover,
+.status-btn:hover {
+  background-color: #4CAF50; /* Example: change background on hover */
+  color: white; /* Change text color on hover */
+  cursor: pointer; /* Change cursor to pointer */
+  transform: scale(1.1);
+}
+
+/* Specific hover effect for solved state */
+#status.solved:hover,
+.status-btn.solved:hover {
+  background-color: #27ae60; /* Example: change background for solved state */
+}
+
+/* Specific hover effect for unsolved state */
+#status.unsolved:hover,
+.status-btn.unsolved:hover {
+  background-color: #f44336; /* Example: change background for unsolved state */
+}
+
+/* end of hover */
+
+
+
+
+
 
 /* Mobile adjustments for icon buttons */
 @media (max-width: 768px) {

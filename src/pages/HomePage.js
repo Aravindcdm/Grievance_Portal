@@ -43,7 +43,7 @@ const Homepage = () => {
                   <p><strong>Priority:</strong> {grievance.priority}</p>
                 </div>
                 <div className="grievance-actions">
-                  <button className={`status-btn ${grievance.solved ? "solved" : "unsolved"}`}>
+                  <button className={`status-btn ${grievance.solved ? "solved" : "unsolved"}`} id="status">
                     {grievance.solved ? "Solved" : "Unsolved"}
                   </button>
                   <div className="grievance-icons">

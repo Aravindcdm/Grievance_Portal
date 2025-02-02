@@ -7,6 +7,7 @@
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   
   /* Title */
@@ -37,9 +38,17 @@
     font-size: 0.95rem; /* Smaller font size */
     border-radius: 5px;
     border: 1px solid #ccc; /* Light border color */
+    border: 1px solid #cacaca; /* Light border color */
     margin-bottom: 8px; /* Reduced margin between fields */
     width: 100%;
+    resize: none;
+    transition: width 0.3s ease-in-out;
   }
+
+  /* .grievance-input:hover , .grievance-textarea :hover {
+    resize: none;
+    
+  } */
   
   .grievance-textarea {
     resize: vertical; /* Allow resizing of the textarea vertically */
@@ -70,4 +79,25 @@
   .grievance-submit-button:hover {
     background-color: #16a085; /* Darker blue on hover */
   }
+  
+  .back {
+    /* background-color: #4CAF50;  Green background */
+    /* background: #16a085; */
+    color: #000; /* White text color */
+    font-size: 16px; /* Font size */
+    padding: 10px 10px; /* Padding around the text */
+    border: none; /* Remove border */
+    border-radius: 12px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+    position: relative;
+    margin: 15px 0px 0px 15px ;
+    
+  }
+  
+  .back:hover {
+    background-color: #aeaeae; /* Darker green when hovered */
+    /* transform: scale(1.05); */
+  }
+  
   

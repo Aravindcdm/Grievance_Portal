@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
 const Dashboard = () => {
   const [department, setDepartment] = useState("");
   const [grievances, setGrievances] = useState([]);
+  const navigate = useNavigate();
 
   // Fetch grievances from localStorage
   useEffect(() => {
@@ -38,6 +40,7 @@ const Dashboard = () => {
 
   return (
     <div id="dashboard-container">
+      <button className="back" onClick={() => navigate("/")}> &#8678; Back</button>
       <h1 id="dashboard-header">Grievance Dashboard</h1>
       <p id="dashboard-introduction">
         Welcome to the Grievance Dashboard! Here, you can view and address student grievances categorized by department and priority. Use the dropdown menu to filter grievances by department, <br />

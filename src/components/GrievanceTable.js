@@ -1,53 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import GrievanceRow from './GrievanceRow';
 import "../styles/GrievanceTable.css";
 import { FaSearch } from 'react-icons/fa';
 
-const GrievanceTable = () => {
-    const [grievances, setGrievances] = useState([]);
-
-    // Load grievances from localStorage when component mounts
-    useEffect(() => {
-        const storedGrievances = JSON.parse(localStorage.getItem("grievances")) || [];
-        setGrievances(storedGrievances);
-    }, []);
-
+const GrievanceTable = ({ grievances, updateGrievances }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [departmentFilter, setDepartmentFilter] = useState("All");
     const [statusFilter, setStatusFilter] = useState("All");
     const [priorityFilter, setPriorityFilter] = useState("All");
 
-    // Unique department list
     const departments = ["All", ...new Set(grievances.map(g => g.department))];
 
-    // ✅ Toggle solved status & update localStorage
     const toggleSolved = (id) => {
         const updatedGrievances = grievances.map(grievance =>
             grievance.id === id ? { ...grievance, solved: !grievance.solved } : grievance
         );
-
-        setGrievances(updatedGrievances);
-        localStorage.setItem("grievances", JSON.stringify(updatedGrievances)); // Persist changes
+        updateGrievances(updatedGrievances);
     };
 
-    // ✅ Update reply & save to localStorage
     const updateReply = (id, newReply) => {
         const updatedGrievances = grievances.map(grievance =>
             grievance.id === id ? { ...grievance, reply: newReply } : grievance
         );
-
-        setGrievances(updatedGrievances);
-        localStorage.setItem("grievances", JSON.stringify(updatedGrievances)); // Persist changes
+        updateGrievances(updatedGrievances);
     };
 
-    // ✅ Delete grievance & update localStorage
     const deleteGrievance = (id) => {
         const updatedGrievances = grievances.filter(grievance => grievance.id !== id);
-        setGrievances(updatedGrievances);
-        localStorage.setItem("grievances", JSON.stringify(updatedGrievances)); // Persist changes
+        updateGrievances(updatedGrievances);
     };
 
-    // ✅ Filter grievances based on search & filters
     const filteredGrievances = grievances.filter(g => {
         const matchesSearch = g.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
             g.details.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -62,7 +44,6 @@ const GrievanceTable = () => {
 
     return (
         <div id="grievance-table-container">
-            {/* Search and Filters */}
             <div id="grievance-filters">
                 <div className="search-bar">
                     <FaSearch className="search-icon" />
@@ -94,7 +75,6 @@ const GrievanceTable = () => {
                 </select>
             </div>
 
-            {/* Table */}
             <table id="grievance-table">
                 <thead>
                     <tr>
@@ -116,7 +96,7 @@ const GrievanceTable = () => {
                                 grievance={grievance}
                                 updateReply={updateReply}
                                 toggleSolved={toggleSolved}
-                                deleteGrievance={deleteGrievance} // ✅ Passing delete function
+                                deleteGrievance={deleteGrievance}
                             />
                         ))
                     ) : (

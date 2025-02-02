@@ -391,3 +391,60 @@ body {
 .close-popup-btn:hover {
     transform: rotate(180deg); 
 } */
+
+
+
+
+
+
+/* Message Icon (Smaller & Fixed at Bottom Right) */
+#messageIcon {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background-color: #1abc9c; /* Blue chat bubble */
+  color: white;
+  width: 20px; /* Reduced size */
+  height: 10px; /* Reduced size */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px; /* Smaller icon */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, background-color 0.3s;
+}
+
+/* Hover effect */
+#messageIcon:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+/* FontAwesome icon */
+#messageIcon i {
+  font-size: 20px; /* Adjusted size */
+}
+
+/* New Message Notification Badge */
+.new-message-alert {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background-color: red;
+  color: white;
+  font-size: 10px; /* Smaller text */
+  font-weight: bold;
+  padding: 3px 5px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: pulse 1.5s infinite;
+}
+
+/* Pulse Animation for Notification */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}

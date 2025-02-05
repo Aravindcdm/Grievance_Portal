@@ -98,3 +98,18 @@
 }
 
 
+@media (max-width: 768px) {
+    .grievance-status-button {
+        font-size: 12px; /* Smaller font size on mobile */
+        padding: 4px 8px; /* Smaller padding */
+    }
+
+    .grievance-delete-button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .fun-btn {
+        margin: 5px 0;
+    }
+}

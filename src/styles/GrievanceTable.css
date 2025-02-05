@@ -144,3 +144,64 @@
         overflow-x: scroll;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Adjustments for mobile view */
+@media (max-width: 768px) {
+    #grievance-table-container {
+        padding: 10px; /* Reduce padding on mobile for better fit */
+    }
+
+    #grievance-table th, #grievance-table td {
+        padding: 8px; /* Smaller padding on mobile */
+        font-size: 14px; /* Adjust font size for better readability */
+    }
+
+    .search-bar {
+        width: 100%; /* Make the search bar full width on mobile */
+        margin-bottom: 15px;
+    }
+
+    /* Hide filters dropdown if you prefer a simpler layout on mobile */
+    #grievance-filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #grievance-filters select {
+        margin-bottom: 10px; /* Add space between filter items */
+        width: 100%; /* Full-width select dropdowns */
+    }
+
+    .no-results {
+        font-size: 14px; /* Smaller font size for no results message */
+    }
+}

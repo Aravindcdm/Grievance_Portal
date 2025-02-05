@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GrievanceRow from './GrievanceRow';
 import "../styles/GrievanceTable.css";
 import { FaSearch } from 'react-icons/fa';
+import axios from 'axios';
 
 const GrievanceTable = ({ grievances, updateGrievances }) => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -11,25 +12,55 @@ const GrievanceTable = ({ grievances, updateGrievances }) => {
 
     const departments = ["All", ...new Set(grievances.map(g => g.department))];
 
-    const toggleSolved = (id) => {
-        const updatedGrievances = grievances.map(grievance =>
-            grievance.id === id ? { ...grievance, solved: !grievance.solved } : grievance
-        );
-        updateGrievances(updatedGrievances);
+    // Toggle the solved status of a grievance and save to the backend
+    const toggleSolved = async (id, currentStatus) => {
+        try {
+            // Make PUT request to the backend API to update the grievance status
+            const response = await axios.put(`http://localhost:5000/api/grievances/${id}`, {
+                solved: !currentStatus,  // Toggle the current status
+                reply: "" // Pass reply (or leave empty, depending on your logic)
+            });
+    
+            // Assuming the backend returns the updated grievance, update local state
+            const updatedGrievances = grievances.map(grievance =>
+                grievance._id === id ? { ...grievance, solved: !currentStatus } : grievance
+            );
+    
+            // Update local state
+            updateGrievances(updatedGrievances);
+    
+        } catch (error) {
+            console.error("Error updating grievance status:", error);
+        }
+    };
+    
+    
+
+    // Update the reply for a grievance and save to the backend
+    const updateReply = async (id, newReply) => {
+        try {
+            await axios.put(`http://localhost:5000/api/grievances/${id}`, { reply: newReply });
+            const updatedGrievances = grievances.map(grievance =>
+                grievance._id === id ? { ...grievance, reply: newReply } : grievance
+            );
+            updateGrievances(updatedGrievances);
+        } catch (error) {
+            console.error("Error updating reply:", error);
+        }
     };
 
-    const updateReply = (id, newReply) => {
-        const updatedGrievances = grievances.map(grievance =>
-            grievance.id === id ? { ...grievance, reply: newReply } : grievance
-        );
-        updateGrievances(updatedGrievances);
+    // Delete a grievance and update the backend
+    const deleteGrievance = async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/grievances/${id}`);
+            const updatedGrievances = grievances.filter(grievance => grievance._id !== id);
+            updateGrievances(updatedGrievances);
+        } catch (error) {
+            console.error("Error deleting grievance:", error);
+        }
     };
 
-    const deleteGrievance = (id) => {
-        const updatedGrievances = grievances.filter(grievance => grievance.id !== id);
-        updateGrievances(updatedGrievances);
-    };
-
+    // Filter grievances based on search and filter criteria
     const filteredGrievances = grievances.filter(g => {
         const matchesSearch = g.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
             g.details.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -62,13 +93,13 @@ const GrievanceTable = ({ grievances, updateGrievances }) => {
                 </select>
 
                 <select onChange={(e) => setStatusFilter(e.target.value)} value={statusFilter}>
-                    <option value="All">All</option>
+                    <option value="All">Status</option>
                     <option value="Solved">Solved</option>
                     <option value="Unsolved">Unsolved</option>
                 </select>
 
                 <select onChange={(e) => setPriorityFilter(e.target.value)} value={priorityFilter}>
-                    <option value="All">All</option>
+                    <option value="All">Priority</option>
                     <option value="high">High</option>
                     <option value="medium">Medium</option>
                     <option value="low">Low</option>
@@ -92,7 +123,7 @@ const GrievanceTable = ({ grievances, updateGrievances }) => {
                     {filteredGrievances.length > 0 ? (
                         filteredGrievances.map((grievance) => (
                             <GrievanceRow 
-                                key={grievance.id} 
+                                key={grievance._id} 
                                 grievance={grievance}
                                 updateReply={updateReply}
                                 toggleSolved={toggleSolved}

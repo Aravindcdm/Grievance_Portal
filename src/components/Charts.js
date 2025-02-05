@@ -34,7 +34,7 @@ const Charts = ({ grievances }) => {
                     labels: Object.keys(departmentCounts),
                     datasets: [{
                         data: Object.values(departmentCounts),
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#FF9800' , '#ff4d4d'],
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#FF9800', '#FF4D4D', '#9C27B0', '#00BCD4', '#8BC34A', '#FF5722', '#E91E63']
                     }],
                 },
                 options: {
@@ -55,7 +55,7 @@ const Charts = ({ grievances }) => {
                     labels: Object.keys(subjectCounts),
                     datasets: [{
                         data: Object.values(subjectCounts),
-                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#FF9800' , '#ff4d4d'],
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#FF9800', '#FF4D4D', '#9C27B0', '#00BCD4', '#8BC34A', '#FF5722', '#E91E63']
                     }],
                 },
                 options: {

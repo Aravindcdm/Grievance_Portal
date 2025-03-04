@@ -56,36 +56,89 @@ const GrievanceTable = ({ grievances, updateGrievances }) => {
       console.error("❌ Error deleting grievance:", error);
     }
   };
+  const filteredGrievances = grievances.filter(g => {
+    const matchesSearch = [g.subject, g.details, g.department]
+        .some(field => field.toLowerCase().includes(searchQuery.toLowerCase()));
 
-  return (
+    const matchesDepartment = departmentFilter === "All" || g.department === departmentFilter;
+    const matchesStatus = statusFilter === "All" ||
+        (statusFilter === "Solved" && g.solved) ||
+        (statusFilter === "Unsolved" && !g.solved);
+    const matchesPriority = priorityFilter === "All" || g.priority === priorityFilter;
+
+    return matchesSearch && matchesDepartment && matchesStatus && matchesPriority;
+});
+
+return (
     <div id="grievance-table-container">
-      <table id="grievance-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Subject</th>
-            <th>Details</th>
-            <th>Department</th>
-            <th>Priority</th>
-            <th>Status</th>
-            <th>Reply</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {grievances.map((grievance) => (
-            <GrievanceRow
-              key={grievance._id}
-              grievance={grievance}
-              updateReply={updateReply}
-              toggleSolved={toggleSolved}
-              deleteGrievance={deleteGrievance}
-            />
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+        <div id="grievance-filters">
+            <div className="search-bar">
+                <FaSearch className="search-icon" />
+                <input
+                    type="text"
+                    placeholder="Search grievances..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+            </div>
 
+            <select onChange={(e) => setDepartmentFilter(e.target.value)} value={departmentFilter}>
+                {departments.map(dep => <option key={dep} value={dep}>{dep}</option>)}
+            </select>
+
+            <select onChange={(e) => setStatusFilter(e.target.value)} value={statusFilter}>
+                <option value="All">Status</option>
+                <option value="Solved">Solved</option>
+                <option value="Unsolved">Unsolved</option>
+            </select>
+
+            <select onChange={(e) => setPriorityFilter(e.target.value)} value={priorityFilter}>
+                <option value="All">Priority</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        </div>
+
+        <table id="grievance-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Subject</th>
+                    <th>Details</th>
+                    <th>Department</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Reply</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {filteredGrievances.length > 0 ? (
+                    filteredGrievances.map(grievance => {
+                        if (!grievance._id) {
+                            console.error("⚠️ Grievance missing _id:", grievance);
+                            return null; // skip rendering this broken entry
+                        }
+
+                        return (
+                          <GrievanceRow
+                          key={grievance._id}
+                          grievance={grievance}
+                          updateReply={updateReply}
+                          toggleSolved={toggleSolved}
+                          deleteGrievance={deleteGrievance}
+                        />
+                        );
+                    })
+                ) : (
+                    <tr>
+                        <td colSpan="8">No grievances found</td>
+                    </tr>
+                )}
+            </tbody>
+        </table>
+    </div>
+);
+};
 export default GrievanceTable;

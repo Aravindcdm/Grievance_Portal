@@ -4,17 +4,14 @@ const cors = require("cors");
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
 mongoose
   .connect("mongodb+srv://G-PORTAL:123@cluster0.0r1d2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
-// Define Grievance Schema
 const grievanceSchema = new mongoose.Schema({
   fullName: String,
   department: String,
